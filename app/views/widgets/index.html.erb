@@ -23,7 +23,7 @@
     <td><%= widget.name %></td>
     <td><%= widget.subject %></td>
     <td><%= widget.message %></td>
-    <td><%= widget.screenshot_url %></td>
+    <td><%= link_to widget.screenshot.url, widget.screenshot.url %></td>
     <td><%= link_to 'Show', widget %></td>
     <td><%= link_to 'Edit', edit_widget_path(widget) %></td>
     <td><%= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
