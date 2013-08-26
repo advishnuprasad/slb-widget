@@ -33,7 +33,7 @@
             $('#clickdesk_notification_text').show();
               $.ajax({
                   type: "POST",
-                  url: 'http://192.168.2.114:4444/widgets.json',
+                  url: 'http://nameless-castle-6198.herokuapp.com/widgets.json',
                   data: {base_64 : html, attr : attr, license_key : key}
                 }).done(function(result){
                   $('#clickdesk_notification_text').html('Online -Strata Widget <br/> Submitted');
