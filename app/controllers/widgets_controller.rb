@@ -43,8 +43,8 @@ class WidgetsController < ApplicationController
     headers['Access-Control-Allow-Origin'] = "*"
     params.merge!(Rack::Utils.parse_nested_query(params["attr"]))
     if Widget::LICENCE_KEYS.include?(params["license_key"])
-      @widget = Widget.new(params[:widget])
       params[:widget][:license_key] = params["license_key"]
+      @widget = Widget.new(params[:widget])
       if params[:base_64]
         data_url = params[:base_64]
         png = Base64.decode64(data_url['data:image/png;base64,'.length .. -1])
