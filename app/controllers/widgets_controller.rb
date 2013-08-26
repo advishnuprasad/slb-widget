@@ -43,14 +43,16 @@ class WidgetsController < ApplicationController
     headers['Access-Control-Allow-Origin'] = "*"
     params.merge!(Rack::Utils.parse_nested_query(params["attr"]))
     if Widget::LICENCE_KEYS.include?(params["license_key"])
-      params[:widget][:license_key] = params["license_key"]
-      data_url = params[:base_64]
-      png = Base64.decode64(data_url['data:image/png;base64,'.length .. -1])
       @widget = Widget.new(params[:widget])
-      file = File.open('public/screenshot.png', 'wb') do |f|
-       f.write(png)
-       @widget.screenshot = f
-     end
+      params[:widget][:license_key] = params["license_key"]
+      if params[:base_64]
+        data_url = params[:base_64]
+        png = Base64.decode64(data_url['data:image/png;base64,'.length .. -1])
+        file = File.open('public/screenshot.png', 'wb') do |f|
+         f.write(png)
+         @widget.screenshot = f
+        end
+      end
       respond_to do |format|
         if @widget.save
           format.html { redirect_to @widget, notice: 'Widget was successfully created.' }
