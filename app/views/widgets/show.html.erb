@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>License key:</b>
+  <%= @widget.license_key %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @widget.user_id %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @widget.email_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @widget.name %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @widget.subject %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @widget.message %>
+</p>
+
+<p>
+  <b>Screenshot url:</b>
+  <%= @widget.screenshot_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_widget_path(@widget) %> |
+<%= link_to 'Back', widgets_path %>
