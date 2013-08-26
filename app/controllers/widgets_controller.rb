@@ -42,9 +42,6 @@ class WidgetsController < ApplicationController
   def create
     headers['Access-Control-Allow-Origin'] = "*"
     params.merge!(Rack::Utils.parse_nested_query(params["attr"]))
-    p params
-    p
-    p
     if Widget::LICENCE_KEYS.include?(params["license_key"])
       params[:widget][:license_key] = params["license_key"]
       data_url = params[:base_64]
