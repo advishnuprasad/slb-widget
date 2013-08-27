@@ -61,8 +61,8 @@
           $('#widget-result').show();
           $.ajax({
             type: "POST",
-            url: 'http://localhost:4444/widgets.json',
-            // url: 'http://nameless-castle-6198.herokuapp.com/widgets.json',
+            // url: 'http://localhost:4444/widgets.json',
+            url: 'http://nameless-castle-6198.herokuapp.com/widgets.json',
             crossDomain:true,
             dataType: 'json',
             data: {attr : attr, license_key : key}
