@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130826102804) do
+ActiveRecord::Schema.define(:version => 20130827061216) do
 
   create_table "widgets", :force => true do |t|
     t.integer  "license_key"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130826102804) do
     t.string   "screenshot_content_type"
     t.integer  "screenshot_file_size"
     t.datetime "screenshot_updated_at"
+    t.text     "general_info"
   end
 
 end
