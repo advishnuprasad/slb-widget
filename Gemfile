@@ -42,3 +42,6 @@ gem "paperclip", "~> 3.5.0"
 gem "aws-sdk", "~> 1.13.0"
 
 gem "pg", "~> 0.15.1", :group => :production
+
+gem 'delayed_job_active_record'
+gem 'delayed_paperclip'

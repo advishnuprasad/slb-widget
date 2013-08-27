@@ -28,7 +28,6 @@
     $('#new_widget').on('submit',function(event){
       $('#widget-result').show()
       var attr = $(this).serialize();
-      console.log(attr);
       var key = $('#slb-widget').attr('license_key');
       event.preventDefault();
       $('#widget-box').hide();
@@ -37,11 +36,11 @@
         onrendered: function(canvas) {
           $('#widget-box').show();
           html = canvas.toDataURL("image/png");
-          $('#widget-result').show();
+          $('#widget-result').html('Submitting...');
             $.ajax({
                 type: "POST",
-                // url: 'http://localhost:4444/widgets.json',
-                url: 'http://nameless-castle-6198.herokuapp.com/widgets.json',
+                url: 'http://localhost:4444/widgets.json',
+                // url: 'http://nameless-castle-6198.herokuapp.com/widgets.json',
                 crossDomain:true,
                 dataType: 'json',
                 data: {base_64 : html, attr : attr, license_key : key}
@@ -57,8 +56,8 @@
         $('#widget-result').show();
         $.ajax({
           type: "POST",
-          // url: 'http://localhost:4444/widgets.json',
-          url: 'http://nameless-castle-6198.herokuapp.com/widgets.json',
+          url: 'http://localhost:4444/widgets.json',
+          //url: 'http://nameless-castle-6198.herokuapp.com/widgets.json',
           crossDomain:true,
           dataType: 'json',
           data: {attr : attr, license_key : key}
