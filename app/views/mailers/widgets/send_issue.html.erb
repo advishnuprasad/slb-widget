@@ -1,0 +1,49 @@
+<div style="font-family:arial,sans-serif;margin:0px;padding:20px">
+    <div style="width:550px;border:2px solid green;padding:15px;margin:10px auto;font-size:13px">
+      <table cellspacing="0" cellpadding="0" style="margin:0px;width:100%">
+        <tbody><tr>
+          <td>
+             <a style="text-decoration:none;color:green;margin:0px;font-size:20px;font-weight:bold" href="#" target="_blank">
+              SD Issue
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-top:10px"><p>Hi, a new issue was reported on your site <b><a href="#" target="_blank">ratnakarbank.com</a></b>.
+              You can reply to this email to add a new comment or <a href="http://nameless-castle-6198.herokuapp.com/widgets  " style="text-decoration:underline;color:#039;margin:0px" target="_blank">click here</a> to view this feedback thread.
+            </p>
+            <div style="margin:0;padding:0;padding-top:5px">
+              Details:
+              <table cellpadding="5" cellspacing="1" border="0" style="border:1px solid #aeaeae">
+                <tbody>
+                  <tr bgcolor="#ddd" style="background-color:#ddd">
+                    <td valign="top" width="150"><b>User</b></td>
+                    <td valign="top" width="370"><%= @widget.name || '' %> - <a href="mailto:<%= @widget.email_id%>" target="_blank"><%= @widget.email_id%></a></td>
+                  </tr>
+                  <tr bgcolor="#eee" style="background-color:#eee">
+                    <td valign="top" width="150"><b>Subject</b></td>
+                    <td valign="top" width="370"><%= @widget.subject %></td>
+                  </tr>
+                  <tr bgcolor="#ddd" style="background-color:#ddd">
+                    <td valign="top" width="150"><b>Message</b></td>
+                    <td valign="top" width="370"><%= @widget.message%></td>
+                  </tr>
+                  <tr bgcolor="#eee" style="background-color:#eee">
+                    <td valign="top" width="150"><b>Has screenshot?</b></td>
+                    <td valign="top" width="370">
+                      <% unless @widget.screenshot_file_name.nil? %>
+                        <a href="<%= @widget.screenshot.url %>" target="_blank"><img src="<%= @widget.screenshot.url(:small) %>" alt="Yes" width="120" height="70"></a>
+                      <% else %>
+                         NO
+                      <% end %>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

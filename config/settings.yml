@@ -1,0 +1,7 @@
+development:
+  user_name: <%= ENV['smtp_username'] %>
+  password: <%= ENV['smtp_password'] %>
+production:
+  user_name: <%= ENV['smtp_username'] %>
+  password: <%= ENV['smtp_password'] %>
+

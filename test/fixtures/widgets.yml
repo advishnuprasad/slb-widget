@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  license_key: 1
+  user_id: 1
+  email_id: MyString
+  name: MyString
+  subject: MyString
+  message: MyText
+  screenshot_url: MyString
+
+two:
+  license_key: 1
+  user_id: 1
+  email_id: MyString
+  name: MyString
+  subject: MyString
+  message: MyText
+  screenshot_url: MyString

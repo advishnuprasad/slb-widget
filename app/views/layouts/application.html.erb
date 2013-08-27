@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WidgetApp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <div id ="slb-widget" license_key="205109058">
+    <%= javascript_include_tag 'https://s3.amazonaws.com/dev.justbooksclc.com/sd_widget/slb-widget.js' %>
+  <end>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
