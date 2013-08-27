@@ -45,3 +45,5 @@ gem "pg", "~> 0.15.1", :group => :production
 
 gem 'delayed_job_active_record'
 gem 'delayed_paperclip'
+
+gem "aws-ses", "~> 0.4.4", :require => 'aws/ses'

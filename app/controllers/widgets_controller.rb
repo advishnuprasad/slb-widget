@@ -55,6 +55,7 @@ class WidgetsController < ApplicationController
       end
       respond_to do |format|
         if @widget.save
+          Delayed::Job.enqueue WidgetMailerJob.new(@widget.id)
           format.html { redirect_to @widget, notice: 'Widget was successfully created.' }
           format.json { render json: @widget, status: :created, location: @widget }
         else

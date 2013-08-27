@@ -26,50 +26,67 @@
     $('#widget-body').append("<br><div id='widget-result' style='display:none'>Submitting...</div>");
     $('#widget_subject').val($(document).attr('title'));
     $('#new_widget').on('submit',function(event){
-      $('#widget-result').show()
-      var attr = $(this).serialize();
-      var key = $('#slb-widget').attr('license_key');
       event.preventDefault();
-      $('#widget-box').hide();
-      if($("#attach_screenshot").is(':checked')){
-        html2canvas(document.body, {
-        onrendered: function(canvas) {
-          $('#widget-box').show();
-          html = canvas.toDataURL("image/png");
-          $('#widget-result').html('Submitting...');
-            $.ajax({
-                type: "POST",
-                url: 'http://localhost:4444/widgets.json',
-                // url: 'http://nameless-castle-6198.herokuapp.com/widgets.json',
-                crossDomain:true,
-                dataType: 'json',
-                data: {base_64 : html, attr : attr, license_key : key}
-              }).done(function(result){
-                $('#widget-result').html('Submitted. Thank You');
-                $('#widget-body').slideToggle('slow');
-              });
-          }
-        });
+      $('#widget-result').show();
+      $('#widget-result').css({'color':'red'})
+      if(!validate_form($(this))){
+        $('#widget-result').html("Please Fill all the details");
       }
       else{
-        $('#widget-box').show();
-        $('#widget-result').show();
-        $.ajax({
-          type: "POST",
-          url: 'http://localhost:4444/widgets.json',
-          //url: 'http://nameless-castle-6198.herokuapp.com/widgets.json',
-          crossDomain:true,
-          dataType: 'json',
-          data: {attr : attr, license_key : key}
-          }).done(function(result){
-            $('#widget-result').html('Submitted. Thank You');
-            $('#widget-body').slideToggle('slow');
+        var attr = $(this).serialize();
+        var key = $('#slb-widget').attr('license_key');
+        $('#widget-box').hide();
+        if($("#attach_screenshot").is(':checked')){
+          html2canvas(document.body, {
+          onrendered: function(canvas) {
+            $('#widget-box').show();
+            html = canvas.toDataURL("image/png");
+            $('#widget-result').html('Submitting...');
+              $.ajax({
+                  type: "POST",
+                  // url: 'http://localhost:4444/widgets.json',
+                  url: 'http://nameless-castle-6198.herokuapp.com/widgets.json',
+                  crossDomain:true,
+                  dataType: 'json',
+                  data: {base_64 : html, attr : attr, license_key : key}
+                }).done(function(result){
+                  $('#widget-result').html('Submitted. Thank You');
+                  $('#widget-body').slideToggle('slow');
+                });
+            }
           });
         }
+        else{
+          $('#widget-box').show();
+          $('#widget-result').show();
+          $.ajax({
+            type: "POST",
+            // url: 'http://localhost:4444/widgets.json',
+            url: 'http://nameless-castle-6198.herokuapp.com/widgets.json',
+            crossDomain:true,
+            dataType: 'json',
+            data: {attr : attr, license_key : key}
+            }).done(function(result){
+              $('#widget-result').html('Submitted. Thank You');
+              $('#widget-body').slideToggle('slow');
+          });
+        }
+      }
     });
     $('#widget-header').on('click', function(){
       $('#widget-body').slideToggle();
     });
     $('#widget-body').css({'padding-left' : '20px', 'border-bottom':' 1px solid green','border-left':' 1px solid green','border-right':' 1px solid green','display':'none','padding':' 5px 5px 10px 5px','text-align':' left','z-index':' 10000','position':'relative','background-color': '#FFFFFF'});
     }
+  }
+
+  function validate_form(){
+    flag = true
+    if($('#widget_email_id').val() == undefined || $('#widget_email_id').val() == ''){
+      flag = false
+    }
+    else if($('#widget_message').val() == undefined || $('#widget_message').val() == ''){
+      flag = false
+    }
+    return flag;
   }
